@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class UsuarioConnection implements DBConnection {
+public class UsuarioConnectionOracle implements DBConnection {
 
-	private static UsuarioConnection instance; // Singleton
+	private static UsuarioConnectionOracle instance; // Singleton
 	private Connection connection;
 	private final String username = "Usuario1";
 	private final String password = "Usuario1X";
@@ -14,7 +14,7 @@ public class UsuarioConnection implements DBConnection {
 	private final String port = "1521";
 	private final String service = "orcl";
 
-	private UsuarioConnection() {
+	private UsuarioConnectionOracle() {
 		try {
 			connection = DriverManager.getConnection(getConnectionString(), username, password);
 		} catch (SQLException e) {
@@ -23,9 +23,9 @@ public class UsuarioConnection implements DBConnection {
 		}
 	}
 
-	public static UsuarioConnection getInstance() {
+	public static UsuarioConnectionOracle getInstance() {
 		if (instance == null)
-			instance = new UsuarioConnection();
+			instance = new UsuarioConnectionOracle();
 		return instance;
 	}
 
