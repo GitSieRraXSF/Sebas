@@ -71,7 +71,7 @@ public class UsuarioDAO {
 	}
 
 	public void Delete(int ID) {
-		String sql = "{? = call DeleteUsuario(?)}";
+		String sql = "{call DeleteUsuario(?)}";
 		try (CallableStatement stmt = connection.prepareCall(sql)) {
 			stmt.setInt(1, ID);
 			stmt.execute();
