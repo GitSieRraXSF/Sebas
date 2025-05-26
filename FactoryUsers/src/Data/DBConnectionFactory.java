@@ -6,7 +6,7 @@ public class DBConnectionFactory {
 		switch (role.toLowerCase()) {
 		case "UsuarioOracle":
 			return UsuarioConnectionOracle.getInstance();
-		case "":
+		case "UsuarioSQLite":
 			return UsuarioConnectionSQLite.getInstance();
 		default:
 			throw new IllegalArgumentException("Rol no válido: " + role);
