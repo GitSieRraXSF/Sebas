@@ -26,6 +26,7 @@
             <Button layoutX="449.0" layoutY="22.0" mnemonicParsing="false" onAction="#btoAgregar" style="-fx-background-color: #4ca535; -fx-cursor: Hand;" text="Agregar" textFill="WHITE" />
             <Button layoutX="161.0" layoutY="22.0" mnemonicParsing="false" onAction="#btoEliminar" style="-fx-background-color: #dc1313; -fx-cursor: hand;" text="Eliminar" textFill="WHITE" />
             <Button layoutX="555.0" layoutY="22.0" mnemonicParsing="false" onAction="#btoActualizar" style="-fx-background-color: #16b7ab; -fx-cursor: hand;" text="Actualizar" textFill="WHITE" />
+            <Button layoutY="43.0" mnemonicParsing="false" onAction="#CerrarVista" style="-fx-cursor: hand;" text="Cerrar" />
          </children>
       </Pane>
    </bottom>

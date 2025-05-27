@@ -112,6 +112,11 @@ public class GestionUsuariosController {
 		initialize();
     }
     
+    @FXML
+    void CerrarVista(ActionEvent event) {
+    	Main.loadView("/View/Conecciones.fxml");
+    }
+    
 	public static boolean isValidEmail(String email) {
 		// Expresión regular para validar el formato del correo electrónico
 		String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
