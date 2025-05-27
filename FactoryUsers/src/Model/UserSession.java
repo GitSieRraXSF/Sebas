@@ -3,20 +3,17 @@ package Model;
 public class UserSession {
 
 	private static UserSession instance;
-
-	private String username;
 	private String role;
 
 	// Private constructor to prevent instantiation
-	private UserSession(String username, String role) {
-		this.username = username;
+	private UserSession(String role) {
 		this.role = role;
 	}
 
 	// Static method to initialize or get the instance
-	public static UserSession getInstance(String username, String role) {
+	public static UserSession getInstance(String role) {
 		if (instance == null) {
-			instance = new UserSession(username, role);
+			instance = new UserSession(role);
 		}
 		return instance;
 	}
@@ -27,10 +24,6 @@ public class UserSession {
 			throw new IllegalStateException("User session has not been initialized.");
 		}
 		return instance;
-	}
-
-	public String getUsername() {
-		return username;
 	}
 
 	public String getRole() {
