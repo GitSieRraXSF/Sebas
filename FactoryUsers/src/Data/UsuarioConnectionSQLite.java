@@ -29,6 +29,6 @@ public class UsuarioConnectionSQLite implements DBConnection {
 	}
 
 	public String getConnectionString() {
-		return String.format("jdbc:sqlite:usuarios.db");
+		return String.format("jdbc:sqlite:usuario.db");
 	}
 }
