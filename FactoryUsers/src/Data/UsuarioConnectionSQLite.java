@@ -8,15 +8,10 @@ public class UsuarioConnectionSQLite implements DBConnection {
 
 	private static UsuarioConnectionSQLite instance; // Singleton
 	private Connection connection;
-	private final String username = "Usuario1";
-	private final String password = "Usuario1V";
-	private final String host = "192.168.254.215";
-	private final String port = "1521";
-	private final String service = "orcl";
 
 	private UsuarioConnectionSQLite() {
 		try {
-			connection = DriverManager.getConnection(getConnectionString(), username, password);
+			connection = DriverManager.getConnection(getConnectionString());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException("Error connecting to the database.");
@@ -34,6 +29,6 @@ public class UsuarioConnectionSQLite implements DBConnection {
 	}
 
 	public String getConnectionString() {
-		return String.format("jdbc:sqlite:usuarios.db", this.host, this.port, this.service);
+		return String.format("jdbc:sqlite:usuarios.db");
 	}
 }
