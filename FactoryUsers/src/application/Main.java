@@ -14,7 +14,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ConeccionesController.fxml"));
 			rootLayout = loader.load();
 			Scene scene = new Scene(rootLayout);
 			scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
