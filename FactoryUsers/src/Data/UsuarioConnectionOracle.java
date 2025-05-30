@@ -14,7 +14,7 @@ public class UsuarioConnectionOracle implements DBConnection {
 	private final String port = "1521";
 	private final String service = "orcl";
 
-	private UsuarioConnectionOracle() {
+	public UsuarioConnectionOracle() {
 		try {
 			connection = DriverManager.getConnection(getConnectionString(), username, password);
 		} catch (SQLException e) {

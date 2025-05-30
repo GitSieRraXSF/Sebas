@@ -3,10 +3,8 @@ package Controller;
 import java.sql.Connection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import Data.DBConnectionFactory;
+import Data.DBFactoryProvider;
 import Data.UsuarioDAO;
-import Model.UserSession;
 import Model.Usuario;
 import application.Main;
 import javafx.collections.FXCollections;
@@ -48,7 +46,7 @@ public class GestionUsuariosController {
     @FXML
     private TextField txtnombre;
     
-    private Connection connection = DBConnectionFactory.getConnectionByRole(UserSession.getInstance().getRole()).getConnection();
+    private Connection connection = (Connection) DBFactoryProvider.getFactory("UsuarioOracle");
 	private UsuarioDAO usuarioDAO = new UsuarioDAO(connection);
 	
 	@FXML
@@ -74,7 +72,7 @@ public class GestionUsuariosController {
     	String nombre = txtnombre.getText();
     	String apellido = txtapellido.getText();
     	String email = colcorreo.getText();
-    	if (usuarioDAO.authenticate(id) && UserSession.getInstance().getRole().equals("Usuario")) {
+    	if (usuarioDAO.authenticate(id)) {
     		Usuario usuario = new Usuario(id, nombre, apellido, email);
     		usuarioDAO.Update(usuario);
     	} else {
@@ -88,7 +86,7 @@ public class GestionUsuariosController {
     	String nombre = txtnombre.getText();
     	String apellido = txtapellido.getText();
     	String email = colcorreo.getText();
-    	if (!usuarioDAO.authenticate(id) && UserSession.getInstance().getRole().equals("Usuario")) {
+    	if (!usuarioDAO.authenticate(id)) {
     		Usuario usuario = new Usuario(id, nombre, apellido, email);
     		if (id > 0 || isValidEmail(email)) {
     			usuarioDAO.Save(usuario);
@@ -102,7 +100,7 @@ public class GestionUsuariosController {
 
     @FXML
     void btoEliminar(ActionEvent event) {
-    	if (!tableUser.getSelectionModel().isEmpty() && UserSession.getInstance().getRole().equals("Usuario")) {
+    	if (!tableUser.getSelectionModel().isEmpty()) {
 			Usuario user = tableUser.getSelectionModel().getSelectedItem();
 			usuarioDAO.Delete(user.getId());
 			initialize();

@@ -9,7 +9,7 @@ public class UsuarioConnectionSQLite implements DBConnection {
 	private static UsuarioConnectionSQLite instance; // Singleton
 	private Connection connection;
 
-	private UsuarioConnectionSQLite() {
+	public UsuarioConnectionSQLite() {
 		try {
 			connection = DriverManager.getConnection(getConnectionString());
 		} catch (SQLException e) {

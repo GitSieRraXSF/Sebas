@@ -1,7 +1,7 @@
 package Controller;
 
 import java.sql.Connection;
-import Data.DBConnectionFactory;
+import Data.DBFactoryProvider;
 import Data.UsuarioDAO;
 import Model.UserSession;
 import application.Main;
@@ -28,13 +28,13 @@ public class ConeccionesController {
     void btoSession(ActionEvent event) {
     	switch (cbConnect.getSelectionModel().getSelectedItem()) {
     	case "UsuarioOracle":
-    		connection = DBConnectionFactory.getConnectionByRole("UsuarioOracle").getConnection();
+    		connection = (Connection) DBFactoryProvider.getFactory("UsuarioOracle");
     		userDAO = new UsuarioDAO(connection);
 			userSession = UserSession.getInstance("UsuarioOracle");
 			Main.loadView("/view/GestionUsuarios.fxml");
 			break;
     	case "UsuarioSQLite":
-    		connection = DBConnectionFactory.getConnectionByRole("UsuarioSQLite").getConnection();
+    		connection = (Connection) DBFactoryProvider.getFactory("UsuarioSQLite");
     		userDAO = new UsuarioDAO(connection);
 			userSession = UserSession.getInstance("UsuarioSQLite");
 			Main.loadView("/view/GestionUsuarios.fxml");
